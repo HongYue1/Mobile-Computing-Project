@@ -1,0 +1,44 @@
+{
+  "name": "hh-ng",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~5.0.4",
+    "@expo/vector-icons": "^14.1.0",
+    "@react-native-async-storage/async-storage": "^2.1.2",
+    "@react-native-community/cli": "^18.0.0",
+    "@react-native-firebase/app": "19.0.0",
+    "@react-native-firebase/auth": "19.0.0",
+    "@react-native/metro-config": "^0.79.2",
+    "@react-navigation/bottom-tabs": "^7.3.12",
+    "@react-navigation/native": "*",
+    "@react-navigation/native-stack": "*",
+    "expo": "53.0.9",
+    "expo-blur": "^14.1.4",
+    "expo-font": "~13.3.1",
+    "expo-status-bar": "^2.2.3",
+    "expo-system-ui": "^5.0.7",
+    "firebase": "^11.6.1",
+    "prop-types": "^15.8.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-maps": "1.18.0",
+    "react-native-paper": "*",
+    "react-native-responsive-dimensions": "^3.1.1",
+    "react-native-safe-area-context": "*",
+    "react-native-screens": "^4.10.0",
+    "react-native-uuid": "^2.0.3",
+    "react-native-web": "^0.20.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true
+}
