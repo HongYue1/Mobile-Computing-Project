@@ -1,69 +1,84 @@
 # Mobile-Computing-Project
 
-## Expo Link: https://snack.expo.dev/@skazka/harvest-hub2?platform=web
+## Expo Link: SOON
 
 
 ### Project Colors
 ```
-CopyPrimary: #4CAF50 (Green)
-Secondary: #FF9800 (Orange)
-Neutral: #F5F5F5 (Light Gray)
-Text: #333333 (Dark Gray)
+  primary: "#03A791",
+  secondary: "#FFFFFF",
+  neutral: "gray",
+  neutral2: "#F2F3F2",
+  text: "#333333",
+  error: "#FF3B30",
+  success: "#4CD964",
+  warning: "#FF9500",
+  shadow: "rgba(0, 0, 0, 0.1)",
 ```
 ### Project Fonts
 ```
-Title: Roboto-Bold
-Header: Roboto-Medium
-Regular: Roboto-Regular
-Bold: Roboto-Bold
+Splash screen: Delius-Regular.ttf
+Splash screen: Pacifico-Regular.ttf
+Titles: Lato-Bold.ttf
+Regular text: Lato-Regular.ttf
 ```
 
 ### Interactions:
 
 ```mermaid
 flowchart TD
-    Welcome[Welcome Screen] --> |Login| Login[Login Screen]
-    Welcome --> |Sign Up| SignUp[Sign Up Screen]
-    Welcome --> |Browse as Guest| Home[Home Screen]
+    %% Simple print-friendly flowchart with essential paths only
+    %% Use minimal colors and simpler connections
+
+    %% --- Authentication Flow ---
+    A[Splash Screen] --> B{Auth Check}
+    B -- "Authenticated" --> HT
+    B -- "Not Authenticated" --> LoginScreen
     
-    Login --> Home
-    SignUp --> Home
+    LoginScreen -- "Login Success" --> HT
+    LoginScreen -- "To Signup" --> SignupScreen
+    SignupScreen -- "Signup Success" --> LoginScreen
+    SignupScreen -- "To Login" --> LoginScreen
     
-    Home --> |Product Card Click| ProductDetail[Product Detail Screen]
-    Home --> |Search| Home
-    Home --> |Category Filter| Home
-    Home --> |Cart Icon| Cart[Cart Screen]
-    Home --> |Explore Tab| Explore[Explore Screen]
-    Home --> |Farms Tab| Farms[Farms Screen]
-    Home --> |Profile Tab| Profile[Profile Screen]
+    %% --- Main Navigation Structure ---
+    HT[Home Tab] --- LT[Locations Tab]
+    LT --- CT[Cart Tab]
+    CT --- PT[Profile Tab]
     
-    ProductDetail --> |Add to Cart| Cart
-    ProductDetail --> |Back| Home
+    %% --- Home Tab Core Interactions ---
+    HT -- "Product Click" --> DetailsScreen
+    HT -- "See All" --> ProductListScreen
+    ProductListScreen -- "Product Click" --> DetailsScreen
     
-    Cart --> |Checkout| Checkout[Checkout Screen]
-    Cart --> |Continue Shopping| Home
+    %% --- Details Screen Core Interactions ---
+    DetailsScreen -- "Add to Cart" --> DetailsScreen
+    DetailsScreen -- "Back" --> HT
+    DetailsScreen -- "View Cart" --> CT
     
-    Checkout --> |Payment| Payment[Payment Screen]
-    Payment --> |Success| OrderConfirmation[Order Confirmation]
+    %% --- Cart Tab Core Interactions ---
+    CT -- "Empty Cart" --> HT
+    CT -- "Checkout" --> CheckoutScreen
     
-    OrderConfirmation --> Home
+    %% --- Checkout Flow Core ---
+    CheckoutScreen -- "Place Order" --> OrderConfirmScreen
+    CheckoutScreen -- "Back to Cart" --> CT
     
-    Profile --> |Order History| OrderHistory[Order History]
-    Profile --> |Settings| Settings[Settings Screen]
-    Profile --> |Edit Profile| EditProfile[Edit Profile Screen]
+    OrderConfirmScreen -- "Continue Shopping" --> HT
+    OrderConfirmScreen -- "View Orders" --> OrderHistoryScreen
     
-    Farms --> |Farm Detail| FarmDetail[Farm Detail Screen]
-    FarmDetail --> |Product| ProductDetail
+    %% --- Profile Tab Core Interactions ---
+    PT -- "View Orders" --> OrderHistoryScreen
+    PT -- "Edit Profile" --> ProfileScreen
+    PT -- "Logout" --> LoginScreen
     
-    subgraph "Main Navigation"
-        Home
-        Explore
-        Farms
-        Profile
-    end
+    %% --- Location Tab Core ---
+    LT -- "Select Location" --> StoreDetailsScreen
     
-    style Welcome fill:#f9f9f9,stroke:#4CAF50,stroke-width:2px
-    style Home fill:#f9f9f9,stroke:#4CAF50,stroke-width:2px
-    style ProductDetail fill:#f9f9f9,stroke:#4CAF50,stroke-width:2px
-    style Cart fill:#f9f9f9,stroke:#FF9800,stroke-width:2px
+    %% Minimal styling focused on clarity for print
+    classDef default fill:white,stroke:#333,stroke-width:1px;
+    classDef tab fill:white,stroke:#333,stroke-width:2px,font-weight:bold;
+    classDef decision fill:white,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5;
+    
+    class HT,LT,CT,PT tab;
+    class B decision;
 ```
