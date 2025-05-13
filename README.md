@@ -1,6 +1,6 @@
 # Mobile-Computing-Project
 
-## Expo Link: SOON
+## Report: https://github.com/HongYue1/Mobile-Computing-Project/blob/main/Report.pdf
 
 
 ### Project Colors
